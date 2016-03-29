@@ -87,15 +87,3 @@ func makeRequest(req *http.Request, params url.Values) (*http.Response, error) {
 	return httpClient.Do(req)
 }
 
-var db *mgo.Session
-func dialdb() error {
-	var err error
-	log.Println("MongoDBにダイアル中: localhost")
-	db, err = ego.Dial("localhost")
-	return err
-}
-
-func closedb() {
-	db.Close()
-	log.Println("データベース接続が閉じられました")
-}
